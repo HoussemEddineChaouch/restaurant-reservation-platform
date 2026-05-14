@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package user;
+
+// User service definition
+service UserService {
+  rpc RegisterUser (RegisterUserRequest) returns (RegisterUserResponse);
+  rpc GetUser (GetUserRequest) returns (GetUserResponse);
+  rpc ValidateUser (ValidateUserRequest) returns (ValidateUserResponse);
+  rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
+  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
+}
+
+// Register 
+message RegisterUserRequest {
+  string name     = 1;
+  string email    = 2;
+  string password = 3;
+  string phone    = 4;
+}
+
+message RegisterUserResponse {
+  string id      = 1;
+  string name    = 2;
+  string email   = 3;
+  string message = 4;
+}
+
+// Get User 
+message GetUserRequest {
+  string id = 1;
+}
+
+message GetUserResponse {
+  string id    = 1;
+  string name  = 2;
+  string email = 3;
+  string phone = 4;
+}
+
+// Validate User (login) 
+message ValidateUserRequest {
+  string email    = 1;
+  string password = 2;
+}
+
+message ValidateUserResponse {
+  bool   valid   = 1;
+  string id      = 2;
+  string name    = 3;
+  string message = 4;
+}
+
+// List Users 
+message ListUsersRequest {}
+
+message ListUsersResponse {
+  repeated UserSummary users = 1;
+}
+
+message UserSummary {
+  string id    = 1;
+  string name  = 2;
+  string email = 3;
+}
+
+// Delete User 
+message DeleteUserRequest {
+  string id = 1;
+}
+
+message DeleteUserResponse {
+  bool   success = 1;
+  string message = 2;
+}

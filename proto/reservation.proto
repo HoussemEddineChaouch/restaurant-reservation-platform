@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package reservation;
+
+// Reservation service definition
+service ReservationService {
+  rpc CreateReservation (CreateReservationRequest) returns (CreateReservationResponse);
+  rpc GetReservation    (GetReservationRequest)    returns (GetReservationResponse);
+  rpc ListReservations  (ListReservationsRequest)  returns (ListReservationsResponse);
+  rpc CancelReservation (CancelReservationRequest) returns (CancelReservationResponse);
+  rpc GetUserReservations (GetUserReservationsRequest) returns (GetUserReservationsResponse);
+}
+
+// Create Reservation
+message CreateReservationRequest {
+  string user_id       = 1;
+  string restaurant_id = 2;
+  string table_id      = 3;
+  string date          = 4; // ISO8601
+  int32  party_size    = 5;
+  string notes         = 6; // optional special requests
+}
+
+message CreateReservationResponse {
+  string id      = 1;
+  string status  = 2; // "confirmed" | "pending"
+  string message = 3;
+}
+
+// Get Reservation
+message GetReservationRequest {
+  string id = 1;
+}
+
+message GetReservationResponse {
+  string id            = 1;
+  string user_id       = 2;
+  string restaurant_id = 3;
+  string table_id      = 4;
+  string date          = 5;
+  int32  party_size    = 6;
+  string status        = 7;
+  string notes         = 8;
+}
+
+// List Reservations
+message ListReservationsRequest {
+  string restaurant_id = 1; // optional filter
+  string date          = 2; // optional filter
+}
+
+message ListReservationsResponse {
+  repeated ReservationSummary reservations = 1;
+}
+
+message ReservationSummary {
+  string id            = 1;
+  string user_id       = 2;
+  string table_id      = 3;
+  string date          = 4;
+  string status        = 5;
+  int32  party_size    = 6;
+}
+
+// Cancel Reservation
+message CancelReservationRequest {
+  string id      = 1;
+  string user_id = 2; // for ownership check
+}
+
+message CancelReservationResponse {
+  bool   success = 1;
+  string message = 2;
+}
+
+// Get User Reservations
+message GetUserReservationsRequest {
+  string user_id = 1;
+}
+
+message GetUserReservationsResponse {
+  repeated ReservationSummary reservations = 1;
+}
