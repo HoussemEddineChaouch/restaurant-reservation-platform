@@ -1,0 +1,20 @@
+{
+  "name": "restaurant-reservation-platform",
+  "version": "1.0.0",
+  "description": "Smart restaurant reservation platform using Node.js microservices, gRPC, Kafka, REST and GraphQL",
+  "private": true,
+  "workspaces": [
+    "api-gateway",
+    "user-service",
+    "restaurant-service",
+    "reservation-service"
+  ],
+  "scripts": {
+    "start:gateway": "cd api-gateway && node src/index.js",
+    "start:user": "cd user-service && node src/index.js",
+    "start:restaurant": "cd restaurant-service && node src/index.js",
+    "start:reservation": "cd reservation-service && node src/index.js"
+  },
+  "author": "HoussemEddineChaouch",
+  "license": "MIT"
+}
