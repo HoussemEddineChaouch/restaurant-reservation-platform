@@ -1,0 +1,19 @@
+{
+  "name": "reservation-service",
+  "version": "1.0.0",
+  "description": "Reservation management microservice with gRPC, RxDB and Kafka",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "author": "HoussemEddineChaouch",
+  "license": "MIT",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.10.0",
+    "@grpc/proto-loader": "^0.7.0",
+    "kafkajs": "^2.2.4",
+    "rxdb": "^15.0.0",
+    "uuid": "^9.0.0"
+  }
+}
