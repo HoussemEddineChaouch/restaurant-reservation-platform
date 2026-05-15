@@ -1,0 +1,40 @@
+{
+  "name": "reservationsdb",
+  "instanceToken": "icgtrxjwuk",
+  "collections": [
+    {
+      "name": "reservations",
+      "schemaHash": "30792d8e9e1e8d6578a59d26cdc4c7563296b5339cac6bdf3679c33e690e5329",
+      "docs": [
+        {
+          "id": "49a981b0-09ff-459f-a8ec-4975d3c40107",
+          "user_id": "5daf4c5f-bab8-4389-9302-ee19b5d1a858",
+          "restaurant_id": "8f94e53e-a970-4d20-b0db-501ab7935e18",
+          "table_id": "c43f8137-410b-4025-b19d-b485b631f79e",
+          "date": "2026-06-01",
+          "party_size": 2,
+          "status": "cancelled",
+          "notes": "Window seat please",
+          "_meta": {
+            "lwt": 1778847333522.02
+          },
+          "_deleted": false
+        },
+        {
+          "id": "dbd59699-eb66-4058-a0ef-75b294fb7645",
+          "user_id": "9254378-a837-4fd5-821b-aa57383d5808",
+          "restaurant_id": "8f94e53e-a970-4d20-b0db-501ab7935e18",
+          "table_id": "c43f8137-410b-4025-b19d-b485b631f79e",
+          "date": "2026-07-01",
+          "party_size": 3,
+          "status": "confirmed",
+          "notes": "Birthday dinner",
+          "_meta": {
+            "lwt": 1778848124726.01
+          },
+          "_deleted": false
+        }
+      ]
+    }
+  ]
+}
