@@ -32,7 +32,11 @@ const reservationProto = grpc.loadPackageDefinition(
   ),
 ).reservation;
 
-
+// Create gRPC clients
+const userClient = new userProto.UserService(
+  "localhost:50051",
+  grpc.credentials.createInsecure(),
+);
 
 const restaurantClient = new restaurantProto.RestaurantService(
   "localhost:50052",
