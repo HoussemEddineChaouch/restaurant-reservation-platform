@@ -1,6 +1,6 @@
 {
   "name": "reservationsdb",
-  "instanceToken": "icgtrxjwuk",
+  "instanceToken": "natosbdcpl",
   "collections": [
     {
       "name": "reservations",
@@ -16,7 +16,63 @@
           "status": "cancelled",
           "notes": "Window seat please",
           "_meta": {
-            "lwt": 1778847333522.02
+            "lwt": 1779054774657.06
+          },
+          "_deleted": false
+        },
+        {
+          "id": "9a087e8d-fb1d-4d54-a5a8-6443e2bbb772",
+          "user_id": "5daf4c5f-bab8-4389-9302-ee19b5d1a858",
+          "restaurant_id": "8f94e53e-a970-4d20-b0db-501ab7935e18",
+          "table_id": "c43f8137-410b-4025-b19d-b485b631f79e",
+          "date": "2026-06-01",
+          "party_size": 2,
+          "status": "cancelled",
+          "notes": "Window seat please",
+          "_meta": {
+            "lwt": 1779054774657.06
+          },
+          "_deleted": false
+        },
+        {
+          "id": "a72c7de1-c126-4a1b-951d-c82e8184bd19",
+          "user_id": "61de5a38-3ecf-4be9-8bbe-05b3f7816016",
+          "restaurant_id": "8f94e53e-a970-4d20-b0db-501ab7935e18",
+          "table_id": "c43f8137-410b-4025-b19d-b485b631f79e",
+          "date": "2026-07-01",
+          "party_size": 3,
+          "status": "confirmed",
+          "notes": "Birthday dinner",
+          "_meta": {
+            "lwt": 1779054774657.06
+          },
+          "_deleted": false
+        },
+        {
+          "id": "afd3c26d-3556-41e9-be37-b1c400a06869",
+          "user_id": "5daf4c5f-bab8-4389-9302-ee19b5d1a858",
+          "restaurant_id": "8f94e53e-a970-4d20-b0db-501ab7935e18",
+          "table_id": "c43f8137-410b-4025-b19d-b485b631f79e",
+          "date": "2026-06-01",
+          "party_size": 2,
+          "status": "confirmed",
+          "notes": "Window seat please",
+          "_meta": {
+            "lwt": 1779054774657.06
+          },
+          "_deleted": false
+        },
+        {
+          "id": "b99281f2-1904-46b3-b7a1-3273c861b6c0",
+          "user_id": "3fa3dabc-ef87-46af-be20-a3fdd8969736",
+          "restaurant_id": "5b107c85-652b-4b71-bd37-926221cb9b6",
+          "table_id": "f1086c5d-f490-43cd-9474-5a60b99ec3e5",
+          "date": "2026-06-01",
+          "party_size": 2,
+          "status": "cancelled",
+          "notes": "Window seat please",
+          "_meta": {
+            "lwt": 1779055147221.05
           },
           "_deleted": false
         },
@@ -30,7 +86,7 @@
           "status": "confirmed",
           "notes": "Birthday dinner",
           "_meta": {
-            "lwt": 1778848124726.01
+            "lwt": 1779054774657.06
           },
           "_deleted": false
         }

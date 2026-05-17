@@ -8,11 +8,12 @@ const kafka = new Kafka({
 });
 
 const consumer = kafka.consumer({ groupId: "restaurant-service-group" });
+const producer = kafka.producer();
 
 const startConsumer = async () => {
   await consumer.connect();
+  await producer.connect();
 
-  // Subscribe to both reservation topics
   await consumer.subscribe({
     topic: "reservation.created",
     fromBeginning: false,
@@ -32,7 +33,6 @@ const startConsumer = async () => {
           `[RestaurantService] Kafka: reservation.created received for table ${data.tableId}`,
         );
 
-        // Mark table as unavailable on that date
         const id = uuidv4();
         db.run(`
           INSERT INTO table_availability (id, table_id, date, is_available)
@@ -40,6 +40,23 @@ const startConsumer = async () => {
           ON CONFLICT(table_id, date) DO UPDATE SET is_available = 0
         `);
         saveDb();
+
+        await producer.send({
+          topic: "table.availability.updated",
+          messages: [
+            {
+              value: JSON.stringify({
+                tableId: data.tableId,
+                restaurantId: data.restaurantId,
+                isAvailable: false,
+                date: data.date,
+              }),
+            },
+          ],
+        });
+        console.log(
+          `[RestaurantService] Kafka: table.availability.updated published for table ${data.tableId}`,
+        );
       }
 
       if (topic === "reservation.cancelled") {
@@ -47,13 +64,29 @@ const startConsumer = async () => {
           `[RestaurantService] Kafka: reservation.cancelled received for table ${data.tableId}`,
         );
 
-        // Mark table as available again on that date
         db.run(`
           UPDATE table_availability
           SET is_available = 1
           WHERE table_id = '${data.tableId}' AND date = '${data.date}'
         `);
         saveDb();
+
+        await producer.send({
+          topic: "table.availability.updated",
+          messages: [
+            {
+              value: JSON.stringify({
+                tableId: data.tableId,
+                restaurantId: data.restaurantId,
+                isAvailable: true,
+                date: data.date,
+              }),
+            },
+          ],
+        });
+        console.log(
+          `[RestaurantService] Kafka: table.availability.updated published for table ${data.tableId}`,
+        );
       }
     },
   });

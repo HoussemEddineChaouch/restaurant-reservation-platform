@@ -3,6 +3,7 @@ const protoLoader = require("@grpc/proto-loader");
 const path = require("path");
 const { initDb } = require("./db/database");
 const { connectProducer } = require("./kafka/producer");
+const { startConsumer } = require("./kafka/consumer");
 const handlers = require("./handlers/reservationHandlers");
 
 const PROTO_PATH = path.join(__dirname, "../../proto/reservation.proto");
@@ -24,6 +25,9 @@ const start = async () => {
 
   // Connect Kafka producer
   await connectProducer();
+
+  // Start Kafka consumer for table.availability.updated
+  await startConsumer();
 
   // Create gRPC server
   const server = new grpc.Server();
